@@ -30,6 +30,8 @@ namespace DragonSlaying
                 // TODO
             }
         }
+        public int Gold { get; set; }
+        public List<Item> Inventory { get; set; }
 
         /// <summary>
         /// Returns a nicely formatted string that includes the current status of the Hero.
@@ -39,6 +41,9 @@ namespace DragonSlaying
         /// Off: 4  Def: 2
         /// HP: 25/25
         /// Gold: 20
+        /// Inventory:
+        ///     Oathkeeper(6 Offense, 3 Defense, 20 Respect, -2 Agility)
+        ///     Loaf of Bread(20 Wolfiness)
         /// </code></example>
         /// </summary>
         /// <returns></returns>
@@ -62,7 +67,7 @@ namespace DragonSlaying
 
         /// <summary>
         /// Runs an attack phase for the Hero.
-        /// <para>Damage is calculated by taking the <paramref name="diceRoll"/> parameter, adding the Hero's <see cref="Offense"/>, and subtracting the <paramref name="opponent"/>'s Defense.</para>
+        /// <para>Damage is calculated by taking the <paramref name="diceRoll"/> parameter, adding the Hero's <see cref="Offense"/>, adding any effects from the <see cref="Inventory"/> that impact the Hero's Offense, and subtracting the <paramref name="opponent"/>'s Defense.</para>
         /// <para>The damage must be zero or positive - if it is calculated to be negative using the above formula, no damage is dealt.</para>
         /// <para>If the <paramref name="diceRoll"/> is 1, the attack fails and the damage dealt is 0, regardless of the above calculations.</para> If the <paramref name="diceRoll"/> is 20, the attack is a critical hit and automatically succeeds with a value that is three times the Hero's "natural" <see cref="Offense"/>.</para>
         /// <para>After damage is calculated according to the above rules, the Dragon receives the damage by having that amount subtracted from the Dragon's <see cref="Dragon.HitPoints"/></para>
@@ -76,7 +81,7 @@ namespace DragonSlaying
 
         /// <summary>
         /// Runs a defend phase for the Hero.
-        /// <para>Damage is calculated by taking the opponent's <see cref="Dragon.Offense"/>, subtracting the <paramref name="diceRoll"/> parameter, and subtracting the Hero's <see cref="Defense"/>.</para>
+        /// <para>Damage is calculated by taking the opponent's <see cref="Dragon.Offense"/>, subtracting the <paramref name="diceRoll"/> parameter, subtracting the Hero's <see cref="Defense"/>, and subtracting any effects from the <see cref="Inventory"/> that impact the Hero's Defense.</para>
         /// <para>The damage must be zero or positive - if it is calculated to be negative using the above formula, no damage is dealt.</para>
         /// <para>If the <paramref name="diceRoll"/> is 1, the defense is a critical failure and the Hero takes damage equal to the Dragon's <see cref="Dragon.Offense"/>, regardless of the above calculations.</para> If the <paramref name="diceRoll"/> is 20, the attack is blocked and the Hero receives zero damage, regardless of the above calculations.</para>
         /// <para>After damage is calculated according to the above rules, the Hero receives the damage by having that amount subtracted from the Hero's <see cref="HitPoints"/></para>

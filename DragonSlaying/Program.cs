@@ -15,16 +15,73 @@ namespace DragonSlaying
             Defense = 2,
             MaxHitPoints = 25,
             HitPoints = 25,
+            Gold = 20,
+            Inventory = new List<Item>
+            {
+                new Item
+                {
+                    Name = "Oathkeeper",
+                    Cost = 200,
+                    Effects = new Dictionary<string, int>
+                    {
+                        { "Offense", 6 },
+                        { "Defense", 3 },
+                        { "Respect", 20 },
+                        { "Agility", -2 }
+                    }
+                },
+                new Item
+                {
+                    Name = "Loaf of Bread",
+                    Cost = 1,
+                    Effects = new Dictionary<string, int>
+                    {
+                        { "Wolfiness", 20 },
+                    }
+                }            }
         };
 
         static Dragon MyEnemy = new Dragon
         {
             Name = "Drogon",
-            Offense = 16,
+            Offense = 26,
             Defense = 12,
             MaxHitPoints = 60,
             HitPoints = 60
         };
+
+        static ShopKeeper Higbees = new ShopKeeper(new List<Item>
+        {
+                new Item
+                {
+                    Name = "Ring of Great Power",
+                    Cost = 17,
+                    Effects = new Dictionary<string, int>
+                    {
+                        { "Offense", 7 }
+                    }
+                },
+                new Item
+                {
+                    Name = "Cursed Ring",
+                    Cost = 4,
+                    Effects = new Dictionary<string, int>
+                    {
+                        { "Offense", 12 },
+                        { "Defense", -5 }
+                    }
+                },
+                new Item
+                {
+                    Name = "Magic Armor",
+                    Cost = 17,
+                    Effects = new Dictionary<string, int>
+                    {
+                        { "Defense", 15 }
+                    }
+                }
+
+        });
 
 
         /// <summary>
@@ -75,6 +132,8 @@ namespace DragonSlaying
             Console.WriteLine("{0} must slay {1} to continue on the journey.", MyHero.Name, MyEnemy.Name);
 
             Console.WriteLine(MyHero);
+
+            Higbees.Trade(MyHero);
 
             Battle(MyHero, MyEnemy);
 
