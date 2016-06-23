@@ -15,6 +15,7 @@ namespace DragonSlaying
         /// Constructs a 6-sided Die.
         /// </summary>
         public Die() : this(6)
+            // says take this objects constructor and input 6 as the value
         {
         }
 
@@ -25,7 +26,8 @@ namespace DragonSlaying
         public Die(int numberOfSides)
         {
             // TODO - Done?
-            numberOfSides = 20;
+            NumberOfSides = numberOfSides;
+           //numberOfSides = 20;
             
         }
 
@@ -36,9 +38,10 @@ namespace DragonSlaying
         public int Roll()
         {
             retunr 1;
-           //TODO - Done?
+            //TODO - Done?
             //Random random = new Random();
             //int dieRoll = random.Next(21);
+            int dieRoll = random.Next(20) + 1; 
             
         }
     }
