@@ -13,7 +13,7 @@ namespace DragonSlaying
         public int Offense { get; set; }
         public int Defense { get; set; }
         public int MaxHitPoints { get; set; }
-        // TODO: Add any necessary fields
+        // TODO: Add any necessary fields  <---- DONE?
 
         /// <summary>
         /// Keeps track of the number of hit points a Hero has. Cannot be less than 0
@@ -32,7 +32,7 @@ namespace DragonSlaying
             set
             {
 
-                hp = value;
+                
                 if (value < 0)
                 {
                     hp = 0;
@@ -58,7 +58,8 @@ namespace DragonSlaying
         /// <returns></returns>
         public override string ToString()
         {
-            // TODO
+            var sb = new StringBuilder();
+
             sb.AppendLine(Name);
             sb.AppendLine("==========");
             sb.AppendFormat("Off: {0}\tDef: {1}\n", Offense, Defense);
@@ -97,6 +98,7 @@ namespace DragonSlaying
         public void Attack(Dragon opponent, int diceRoll)
         {
             // TODO
+
         }
 
         /// <summary>
