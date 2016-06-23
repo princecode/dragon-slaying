@@ -35,6 +35,9 @@ namespace DragonSlaying
         {
             // TODO
             return true;
+            if
+                (HitPoints > 0);
+
             //throw new NotImplementedException();
         }
 

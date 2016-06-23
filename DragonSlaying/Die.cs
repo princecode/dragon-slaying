@@ -25,9 +25,9 @@ namespace DragonSlaying
         /// <param name="numberOfSides">The number of sides on the Die</param>
         public Die(int numberOfSides)
         {
-            // TODO - Done?
+            
             NumberOfSides = numberOfSides;
-           //numberOfSides = 20;
+            random = new Random(); 
             
         }
 
@@ -36,12 +36,11 @@ namespace DragonSlaying
         /// </summary>
         /// <returns>A random number between 1 and <see cref="NumberOfSides"/></returns>
         public int Roll()
-        {
-            retunr 1;
-            //TODO - Done?
+        {           
+          
             //Random random = new Random();
-            //int dieRoll = random.Next(21);
-            int dieRoll = random.Next(20) + 1; 
+            //int dieRoll = random.Next(21); <--- wrong, still would include 0
+            return random.Next(1, NumberOfSides + 1); // could also be simply written as random.Next(NumberOfSides) + 1  ---- the 1 in "()" sets the min value for range but still doesnt account for 1 less than max value entered
             
         }
     }
