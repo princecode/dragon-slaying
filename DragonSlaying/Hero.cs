@@ -8,27 +8,40 @@ namespace DragonSlaying
 {
     public class Hero
     {
-        public string Name { get; set; }
+        public string Name;
+        //public string Name { get; set; } <-- Canceled I believe because we don't want set changing value from outside the class
         public int Offense { get; set; }
         public int Defense { get; set; }
         public int MaxHitPoints { get; set; }
         // TODO: Add any necessary fields
-        
+
         /// <summary>
         /// Keeps track of the number of hit points a Hero has. Cannot be less than 0
         /// (if a negative number is passed in, HitPoints will be set to 0 instead).
         /// </summary>
+
+        private int hp;
         public int HitPoints
         {
             get
             {
-                // TODO
-                return 1;
+
+                return hp;
                 //throw new NotImplementedException();
             }
             set
             {
-                // TODO
+
+                hp = value;
+                if (value < 0)
+                {
+                    hp = 0;
+                }
+                else
+                {
+                    hp = value;
+                }
+
             }
         }
 
@@ -46,8 +59,13 @@ namespace DragonSlaying
         public override string ToString()
         {
             // TODO
-            return "";
-            //throw new NotImplementedException();
+            sb.AppendLine(Name);
+            sb.AppendLine("==========");
+            sb.AppendFormat("Off: {0}\tDef: {1}\n", Offense, Defense);
+            sb.AppendFormat("HP: {0}/{1}\n", HitPoints, MaxHitPoints);
+
+            return sb.ToString();
+
         }
 
 
@@ -60,7 +78,11 @@ namespace DragonSlaying
         {
             // TODO
             //throw new NotImplementedException();
-            return true;
+            if (HitPoints > 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
