@@ -77,8 +77,7 @@ namespace DragonSlaying
         /// <returns>true if the Hero is alive, false if they are not</returns>
         public bool IsAlive()
         {
-            // TODO
-            //throw new NotImplementedException();
+            
             if (HitPoints > 0)
             {
                 return true;
@@ -97,8 +96,21 @@ namespace DragonSlaying
         /// <param name="diceRoll">A number (1-20) from a dice roll, relating to the effectiveness of the attack</param>
         public void Attack(Dragon opponent, int diceRoll)
         {
-            // TODO
-
+           
+            int dragonDamage = diceRoll + Offense - opponent.Defense;
+            if (dragonDamage < 0)
+            {
+                dragonDamage = 0;
+            }
+            if (diceRoll == 1)
+            {
+                dragonDamage = 0;
+            }
+            if (diceRoll == 20)
+            {
+                dragonDamage = Offense * 3;
+            }
+            opponent.HitPoints -= dragonDamage;
         }
 
         /// <summary>
